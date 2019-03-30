@@ -23,10 +23,10 @@ router.get('/tasks', async (req, res) => {
 });
 
 router.get('/tasks/:id', async (req, res) => {
-    _id = req.params.id;
+    const _id = req.params.id;
 
     try {
-        const task = await Task.findByIdAndUpdate(_id).save()
+        const task = await Task.findById(_id)
         
         if (!task) {
             return res.status(404).send()
