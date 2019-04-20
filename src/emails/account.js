@@ -1,8 +1,6 @@
 const sgMail = require('@sendgrid/mail')
 
-const sendgridAPIKey = ''
-
-sgMail.setApiKey(sendgridAPIKey)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const sendWelcomeEmail = (email, name) => {
     sgMail.send({
@@ -18,7 +16,7 @@ const sendCancelationEmail = (email, name) => {
         to: email,
         from: 'Smajsnamz@gmail.com',
         subject: 'Cancelation email',
-        text: 'Sorry to see you go, was there anything we could have done to keep you?'
+        text: `Sorry to see you go ${name}, was there anything we could have done to keep you?`
     })
 }
 

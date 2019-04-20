@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "dev": "env-cmd ./config/dev.env nodemon src/index.js",
     "server": "C:/Users/Zane/mongodb/bin/mongod.exe  --dbpath=C:/Users/Zane/mongodb-data"
   },
   "keywords": [],
@@ -14,6 +14,7 @@
   "dependencies": {
     "@sendgrid/mail": "^6.3.1",
     "bcryptjs": "^2.4.3",
+    "env-cmd": "^8.0.2",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongodb": "^3.1.0",
