@@ -5,3 +5,5 @@ mongoose.connect(process.env.MONGODB_URL, {
     useCreateIndex: true,
     useFindAndModify: false
 })
+
+// setup mongoDB atlas database
