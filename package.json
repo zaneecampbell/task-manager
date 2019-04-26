@@ -6,8 +6,11 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "env-cmd ./config/dev.env nodemon src/index.js",
-    "test": "jest --watch",
+    "test": "env-cmd ./config/test.env jest --watch",
     "server": "C:/Users/Zane/mongodb/bin/mongod.exe  --dbpath=C:/Users/Zane/mongodb-data"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",
