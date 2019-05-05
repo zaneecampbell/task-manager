@@ -22,8 +22,11 @@ test('Should create task for user', async () => {
             description: 'From my test'
         })
         .expect(201)
+    // Fetches newly created task
     const task = await Task.findById(response.body._id)
+    // Checks to make sure somethings there
     expect(task).not.toBeNull()
+    // Checks to make sure completed was set properly
     expect(task.completed).toEqual(false)
 })
 
@@ -33,15 +36,18 @@ test('Should fetch user tasks', async () => {
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send()
         .expect(200)
+    // Checks to make sure it fetches all tasks for user
     expect(response.body.length).toEqual(2)
 })
 
 test('Should not delete other users tasks', async () => {
-    const responase = await request(app)
+    const response = await request(app)
         .delete(`/tasks/${taskOne._id}`)
         .set('Authorization', `Bearer ${userTwo.tokens[0].token}`)
         .send()
         .expect(404)
+    // Finds current task in database
     const task = await Task.findById(taskOne._id)
+    // Makes sure task was not found
     expect(task).not.toBeNull()
 })
